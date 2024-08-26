@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Android_Homework_Telephony</string>
+
+    <string name="name_tv">Name</string>
+    <string name="phone_number_tv">Phone Number</string>
+
+    <string name="call_menu_item">Call</string>
+    <string name="send_sms_menu_item">Send SMS</string>
+</resources>
