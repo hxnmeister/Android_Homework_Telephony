@@ -1,7 +1,6 @@
 package com.ua.project.android_homework_telephony;
 
 import android.Manifest;
-import android.app.ActivityManager;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -20,7 +19,7 @@ import com.ua.project.android_homework_telephony.data.DbHelper;
 import com.ua.project.android_homework_telephony.databinding.ActivityMainBinding;
 import com.ua.project.android_homework_telephony.interfaces.CallHandler;
 import com.ua.project.android_homework_telephony.interfaces.SmsHandler;
-import com.ua.project.android_homework_telephony.models.ContactModel;
+import com.ua.project.android_homework_telephony.models.Contact;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements CallHandler, SmsH
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        List<ContactModel> contactsList;
+        List<Contact> contactsList;
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         dbHelper = new DbHelper(MainActivity.this);
@@ -68,13 +67,13 @@ public class MainActivity extends AppCompatActivity implements CallHandler, SmsH
 
     private void fillDb(DbHelper db) {
         if(!db.doesTableExist()) {
-            final List<ContactModel> CONTACTS_LIST = new ArrayList<>(List.of(
-                    ContactModel.builder().id(1).firstName("FirstName1").phoneNumber("0998877666").build(),
-                    ContactModel.builder().id(2).phoneNumber("0998827116").build(),
-                    ContactModel.builder().id(3).lastName("LastName3").phoneNumber("0668881656").build(),
-                    ContactModel.builder().id(4).phoneNumber("0931113322").build(),
-                    ContactModel.builder().id(5).firstName("FirstName5").phoneNumber("0667788999").build(),
-                    ContactModel.builder().id(6).firstName("FirstName6").lastName("LastName6").phoneNumber("0223344555").build()
+            final List<Contact> CONTACTS_LIST = new ArrayList<>(List.of(
+                    Contact.builder().id(1).firstName("FirstName1").phoneNumber("0998877666").build(),
+                    Contact.builder().id(2).phoneNumber("0998827116").build(),
+                    Contact.builder().id(3).lastName("LastName3").phoneNumber("0668881656").build(),
+                    Contact.builder().id(4).phoneNumber("0931113322").build(),
+                    Contact.builder().id(5).firstName("FirstName5").phoneNumber("0667788999").build(),
+                    Contact.builder().id(6).firstName("FirstName6").lastName("LastName6").phoneNumber("0223344555").build()
             ));
 
             db.createTable();

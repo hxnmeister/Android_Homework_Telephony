@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ContactModel implements Serializable {
+public class Contact implements Serializable {
     private Integer id;
     private String lastName;
     private String firstName;

@@ -1,32 +1,24 @@
 package com.ua.project.android_homework_telephony.adapters;
 
-import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Intent;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ua.project.android_homework_telephony.R;
 import com.ua.project.android_homework_telephony.interfaces.CallHandler;
 import com.ua.project.android_homework_telephony.interfaces.SmsHandler;
-import com.ua.project.android_homework_telephony.models.ContactModel;
+import com.ua.project.android_homework_telephony.models.Contact;
 
 import java.util.List;
 
-import lombok.Builder;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -34,7 +26,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
     private final Activity activity;
     private final SmsHandler smsHandler;
     private final CallHandler callHandler;
-    private final List<ContactModel> contactsList;
+    private final List<Contact> contactsList;
 
     public static class ContactViewHolder extends RecyclerView.ViewHolder {
         private Integer id;
@@ -58,7 +50,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
 
     @Override
     public void onBindViewHolder(@NonNull ContactViewHolder holder, int position) {
-        ContactModel contact = contactsList.get(position);
+        Contact contact = contactsList.get(position);
 
         holder.id = contact.getId();
         holder.nameTextView.setText(String.format("%s %s",

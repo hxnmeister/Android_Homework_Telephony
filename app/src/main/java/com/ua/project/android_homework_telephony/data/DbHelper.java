@@ -11,7 +11,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.ua.project.android_homework_telephony.models.ContactModel;
+import com.ua.project.android_homework_telephony.models.Contact;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,7 +61,7 @@ public class DbHelper extends SQLiteOpenHelper {
         getWritableDatabase().execSQL(query);
     }
 
-    public void insert(@NonNull ContactModel contact) {
+    public void insert(@NonNull Contact contact) {
         ContentValues values = new ContentValues();
 
         values.put("last_name", contact.getLastName());
@@ -71,8 +71,8 @@ public class DbHelper extends SQLiteOpenHelper {
         getWritableDatabase().insert(tableName, null, values);
     }
 
-    public void insertMany(@NonNull List<ContactModel> contactsList) {
-        for (ContactModel contact : contactsList) {
+    public void insertMany(@NonNull List<Contact> contactsList) {
+        for (Contact contact : contactsList) {
             insert(contact);
         }
     }
@@ -84,13 +84,13 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
     @SuppressLint("Range")
-    public List<ContactModel> findAll() {
+    public List<Contact> findAll() {
         String query = "SELECT * FROM " + tableName;
-        List<ContactModel> contactsList = new ArrayList<>();
+        List<Contact> contactsList = new ArrayList<>();
 
         try (Cursor cursor = getReadableDatabase().rawQuery(query, new String[]{})) {
             while (cursor.moveToNext()) {
-                contactsList.add(ContactModel.builder()
+                contactsList.add(Contact.builder()
                                 .id(cursor.getInt(cursor.getColumnIndex("id")))
                                 .lastName(cursor.getString(cursor.getColumnIndex("last_name")))
                                 .firstName(cursor.getString(cursor.getColumnIndex("first_name")))
