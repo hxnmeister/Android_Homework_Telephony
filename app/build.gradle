@@ -45,5 +45,4 @@ dependencies {
     annotationProcessor libs.lombok
 
     implementation libs.gson
-
 }
